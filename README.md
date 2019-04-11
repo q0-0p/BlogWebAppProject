@@ -45,7 +45,7 @@ Site Sections TODO:
 
 1. Couldn't update the edit page fully in time
 2. Minor issue with index of posts unresolved(for edit page)
-3. Couldn't create the Create Author page in time
+3. Couldn't create the Create Author page in time (in order to add more authors, if needed - can still add using admin page)
 4. Coudln't create the toggle draft/published status in time
 5. First time exposure to python/django
 
