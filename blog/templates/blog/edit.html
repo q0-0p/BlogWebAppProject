@@ -32,10 +32,23 @@
       <label>Update publish date: </label>
       <input id="date" type="datetime-local" name="date" value="{{ post.date }}" />
       <br />
+      
+      <label>Update Author: </label>
+      <select name="{{ post.author }}" >
+          {% if authors %}
+         
+            {% for author in authors %}
+            <option value="{{author}}">{{author.name}}</option>
+            {% endfor %}
+          {% else %}
+          <p>No authors articles are available.</p>
+          {% endif %}
+      </select>
     
-      <button type="submit" value="Update" class="btn btn-primary">Update</button>
-    </form>
+      <div><button type="submit" value="Update" class="btn btn-primary">Update</button></div>
     <div ><a class="btn btn-danger"  role="button" href="/blog/{{ post.id }}">Cancel</a></button>
+
+    </form>
     
 </body>
 </html>

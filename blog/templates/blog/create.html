@@ -1,3 +1,4 @@
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,10 +14,12 @@
   <body>
     <form method="post">
       {% csrf_token %}
-      {{ form }}
+      {{ form | crispy }}
       <button type="submit" value="Create" class="btn btn-primary">
         Create Post
       </button>
     </form>
+    <div ><a class="btn btn-danger"  role="button" href="/blog/{{ post.id }}">Return</a></button>
+
   </body>
 </html>

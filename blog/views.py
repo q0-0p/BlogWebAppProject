@@ -42,8 +42,10 @@ def create(request):
 
 def edit(request, question_id):
     post = Post.objects.order_by('created_date')[question_id-1]
+    authors = Author.objects.order_by('name')[:]
     template = loader.get_template('blog/edit.html')
     context = {
         'post': post,
+        'authors': authors,
     }
     return HttpResponse(template.render(context, request))

@@ -17,6 +17,9 @@ class CreateAuthorForm(forms.ModelForm):
 
 
 class CreatePostForm(forms.ModelForm):
+    created_date = forms.DateTimeField(initial=datetime.datetime.now())
+    description = forms.CharField(widget=forms.Textarea)
+
     class Meta:
         model = Post
         fields = ('title', 'description', 'author', 'created_date')
