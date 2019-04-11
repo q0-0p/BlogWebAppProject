@@ -28,7 +28,7 @@ Site Sections TODO:
 
 1. ✔️ List all Posts
 2. ✔️ Click specific post to view more details
-3. ❌ Button/link to create a Post
+3. ✔️ Button/link to create a Post
 
 ## Post Page (DetailView)
 
@@ -38,4 +38,5 @@ Site Sections TODO:
 
 ## Create a post
 
-1. ❌ Build the form
+1. ✔️ Build the form to create a post
+2. ❌ Build the form to create an author

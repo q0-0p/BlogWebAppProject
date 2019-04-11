@@ -1,24 +1,41 @@
-{% if error_message %}
-<p>
-  <strong>{{ error_message }}</strong>
-</p>
-{% endif %}
-<form action="{% url 'post:edit' post.id %}" method="post">
-  {% csrf_token %}
-  <label>Update post title: </label>
-  <input id="title" type="text" name="title" value="{{ post.title }}" />
-  <br />
-  <label>Update post Description: </label>
-
-  <textarea id="description" type="text" name="description" rows="40" cols="80">
-  {{ post.description }}
-     </textarea
-  >
-  <br />
-  <label>Update publish date: </label>
-  <input id="date" type="datetime-local" name="date" value="{{ post.date }}" />
-  <br />
-
-  <input type="submit" value="Update" />
-</form>
-<div ><a href="/blog/{{ post.id }}">Cancel</a></button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Edit</title>
+  <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+</head>
+<body>
+    {% load staticfiles %}
+    {% if error_message %}
+    <p>
+      <strong>{{ error_message }}</strong>
+    </p>
+    {% endif %}
+    <form action="{% url 'post:edit' post.id %}" method="post">
+      {% csrf_token %}
+      <label>Update post title: </label>
+      <input id="title" type="text" name="title" value="{{ post.title }}" />
+      <br />
+      <label>Update post Description: </label>
+    
+      <textarea id="description" type="text" name="description" rows="40" cols="80">
+      {{ post.description }}
+         </textarea
+      >
+      <br />
+      <label>Update publish date: </label>
+      <input id="date" type="datetime-local" name="date" value="{{ post.date }}" />
+      <br />
+    
+      <button type="submit" value="Update" class="btn btn-primary">Update</button>
+    </form>
+    <div ><a class="btn btn-danger"  role="button" href="/blog/{{ post.id }}">Cancel</a></button>
+    
+</body>
+</html>

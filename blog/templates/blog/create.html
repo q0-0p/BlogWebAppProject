@@ -4,23 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>{{ post.title }}</title>
+    <title>Create post</title>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
     />
   </head>
   <body>
-    {% load staticfiles %}
-    <h1>{{ post.title }}</h1>
-    <ul>
-      <li>{{ post.description }}</li>
-      <li>Author: {{ post.author }}</li>
-      <li>Publish date: {{ post.created_date }}</li>
-    </ul>
-
-    <div>
-      <a href="/blog/{{ post.id }}/edit/">Edit Post</a>
-    </div>
+    <form method="post">
+      {% csrf_token %}
+      {{ form }}
+      <button type="submit" value="Create" class="btn btn-primary">
+        Create Post
+      </button>
+    </form>
   </body>
 </html>

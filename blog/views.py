@@ -8,39 +8,7 @@ from django.template import loader
 from django.http import HttpResponse
 from .models import Post
 from .models import Author
-
-
-# def index(request):
-# return HttpResponse("Hello, world. You're at the polls index.")
-
-
-# def index(request):
-#     posts = Post.objects.order_by('created_date')[:5]
-#     template = loader.get_template('blog/index.html')
-#     context = {
-#         'posts': posts,
-#     }
-#     return HttpResponse(template.render(context, request))
-
-# # test stuff
-
-
-# def detail(request, question_id):
-#     post = Post.objects.order_by('created_date')[question_id-1]
-#     template = loader.get_template('blog/detail.html')
-#     context = {
-#         'post': post,
-#     }
-#     return HttpResponse(template.render(context, request))
-
-
-# def results(request, question_id):
-#     response = "You're looking at the results of question %s."
-#     return HttpResponse(response % question_id)
-
-
-# def vote(request, question_id):
-#     return HttpResponse("You're voting on question %s." % question_id)
+from .forms import CreatePostForm, CreateAuthorForm
 
 
 class IndexView(generic.ListView):
@@ -49,7 +17,7 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """Return the last five published questions."""
-        return Post.objects.order_by('created_date')[:5]
+        return Post.objects.order_by('created_date')[:]
 
 
 class DetailView(generic.DetailView):
@@ -62,6 +30,16 @@ class ResultsView(generic.DetailView):
     template_name = 'blog/results.html'
 
 
+def create(request):
+    if request.method == 'POST':
+        form = CreatePostForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+    form = CreatePostForm()
+    return render(request, 'blog/create.html', {'form': form})
+
+
 def edit(request, question_id):
     post = Post.objects.order_by('created_date')[question_id-1]
     template = loader.get_template('blog/edit.html')
@@ -69,21 +47,3 @@ def edit(request, question_id):
         'post': post,
     }
     return HttpResponse(template.render(context, request))
-
-    # same as above, no changes needed.
-    #question = get_object_or_404(Post, pk=question_id)
-    # try:
-    #     selected_choice = question.author.get(pk=request.POST['choice'])
-    # except (KeyError, Author.DoesNotExist):
-    #     # Redisplay the question voting form.
-    #     return render(request, 'blog/detail.html', {
-    #         'question': question,
-    #         'error_message': "You didn't select a choice.",
-    #     })
-    # else:
-    #     selected_choice.votes += 1
-    #     selected_choice.save()
-    #     # Always return an HttpResponseRedirect after successfully dealing
-    #     # with POST data. This prevents data from being posted twice if a
-    #     # user hits the Back button.
-    # return HttpResponseRedirect(reverse('post:edit', args=(question.id,)))
