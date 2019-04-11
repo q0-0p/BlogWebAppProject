@@ -19,19 +19,20 @@ Site Sections TODO:
 
 1. ✔️ Add Models Author/Post
 2. ✔️ Update settings to add Blog App in settings
-3. ❌ Add test blog/post data
+3. ✔️ Add test blog/post data
+4. ✔️ Add super user
 
 # FrontEnd Section
 
 ## Main Page (ListView)
 
-1. ❌ List all Posts
-2. ❌ Click specific post to view more details
+1. ✔️ List all Posts
+2. ✔️ Click specific post to view more details
 3. ❌ Button/link to create a Post
 
 ## Post Page (DetailView)
 
-1. ❌ Structure the data of the Post
+1. ✔️ Structure the data of the Post
 2. ❌ Edit the info on a Post
 3. ❌ Toggle draft / published status
 

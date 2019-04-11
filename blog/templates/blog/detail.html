@@ -1,0 +1,10 @@
+<h1>{{ post.title }}</h1>
+<ul>
+  <li>{{ post.description }}</li>
+  <li>Author: {{ post.author }}</li>
+  <li>Publish date: {{ post.created_date }}</li>
+</ul>
+
+<div>
+  <a href="/blog/{{ post.id }}/edit/">Edit Post</a>
+</div>

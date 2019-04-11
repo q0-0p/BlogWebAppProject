@@ -1,0 +1,24 @@
+{% if error_message %}
+<p>
+  <strong>{{ error_message }}</strong>
+</p>
+{% endif %}
+<form action="{% url 'post:edit' post.id %}" method="post">
+  {% csrf_token %}
+  <label>Update post title: </label>
+  <input id="title" type="text" name="title" value="{{ post.title }}" />
+  <br />
+  <label>Update post Description: </label>
+
+  <textarea id="description" type="text" name="description" rows="40" cols="80">
+  {{ post.description }}
+     </textarea
+  >
+  <br />
+  <label>Update publish date: </label>
+  <input id="date" type="datetime-local" name="date" value="{{ post.date }}" />
+  <br />
+
+  <input type="submit" value="Update" />
+</form>
+<div ><a href="/blog/{{ post.id }}">Cancel</a></button>
