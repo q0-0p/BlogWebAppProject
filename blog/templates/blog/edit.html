@@ -6,11 +6,34 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Edit</title>
   <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
-    />
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+  crossorigin="anonymous"
+/>
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
+<script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+  crossorigin="anonymous"
+></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" style="font:blue;font-weight:bold; font-size:40px;"><span style="font-size:30px;">&#9998;</span>Edit Post </a>
+          
+          <a class="btn btn-danger"  role="button" href="/blog/{{ post.id }}">Cancel</a></button>
+          </div>
+        </div>
+      </nav>
+      <div style="margin-top:45px;" class="container">
     {% load staticfiles %}
     {% if error_message %}
     <p>
@@ -19,36 +42,63 @@
     {% endif %}
     <form action="{% url 'post:edit' post.id %}" method="post">
       {% csrf_token %}
-      <label>Update post title: </label>
+      <label>Title* </label> <br />
       <input id="title" type="text" name="title" value="{{ post.title }}" />
       <br />
-      <label>Update post Description: </label>
+      <br />
+      <label>Description* </label>
+      <br />
     
-      <textarea id="description" type="text" name="description" rows="40" cols="80">
+      <textarea id="description" type="text" name="description" rows="15" cols="80">
       {{ post.description }}
          </textarea
       >
       <br />
-      <label>Update publish date: </label>
-      <input id="date" type="datetime-local" name="date" value="{{ post.date }}" />
       <br />
+      <label>Publish date* </label>
+      <br />
+
+      <div style="width:400px;">
+        <div class="form-group">
+            <div class="input-group date" id="created_date" data-target-input="nearest">
+                <input type="text" name="created_date" value="{{post.created_date|date:'Y-m-d H:i'}}" class="form-control datetimepicker-input" data-target="#created_date"/>
+                <div class="input-group-append" data-target="#created_date" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
       
-      <label>Update Author: </label>
-      <select name="{{ post.author }}" >
+      <label>Author* </label>
+      <br />
+
+      <select name="author" id="id_author" >
           {% if authors %}
          
             {% for author in authors %}
-            <option value="{{author}}">{{author.name}}</option>
+              <option value="{{author.id}}" {% if author.id == post.author.id %}selected{% endif %}>{{author.name}}</option>
             {% endfor %}
           {% else %}
           <p>No authors articles are available.</p>
           {% endif %}
       </select>
     
-      <div><button type="submit" value="Update" class="btn btn-primary">Update</button></div>
-    <div ><a class="btn btn-danger"  role="button" href="/blog/{{ post.id }}">Cancel</a></button>
+      <div>
+      <br />
+      <button type="submit" value="Update" class="btn btn-primary">Confirm Changes</button></div>
+    <div >
+        <br />
+        
 
     </form>
-    
+    <script type="text/javascript">
+      $(function () {
+          $('#created_date').datetimepicker({
+                    format: 'YYYY-MM-DD HH:mm'
+                });
+      });
+  </script>
+  </div>
 </body>
 </html>

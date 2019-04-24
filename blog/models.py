@@ -13,7 +13,7 @@ class Author(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
-    description = models.CharField(max_length=2000)
+    description = models.TextField(blank=True)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     created_date = models.DateTimeField('date published')
 

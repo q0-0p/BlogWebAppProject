@@ -7,23 +7,44 @@
     <title>{{ post.title }}</title>
     <link
       rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
     />
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    {% load staticfiles %}
-    <h1>{{ post.title }}</h1>
-    <ul>
-      <li>{{ post.description }}</li>
-      <li>Author: {{ post.author }}</li>
-      <li>Publish date: {{ post.created_date }}</li>
-    </ul>
 
-    <div>
-      <a href="/blog/{{ post.id }}/edit/">Edit Post</a>
-    </div>
-    <div>
-      <a href="/blog/">Home</a>
-    </div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container">
+            <a class="navbar-brand" href="/blog" style="font:blue;font-weight:bold; font-size:40px;">Yousif's Blog </a>
+            
+            <a class="btn btn-primary my-2 my-sm-0" role="button" href="/blog/create"
+            >Add Post</a
+          >
+            </div>
+          </div>
+        </nav>
+        <div class="container">
+    {% load staticfiles %}
+    <div style="margin-top:45px;">
+        <a style="text-align:left;" href="/blog/">&#11207; Back</a>
+        <a style="float:right;" href="/blog/{{ post.id }}/edit/">Edit Post</a>
+      </div>
+    <h1 style="margin-top:20px;">{{ post.title }}</h1>
+      <small class="">Publish date: {{ post.created_date }}</small>
+
+
+      <h5>Author: {{ post.author }}</h5>
+
+      <p style="line-height: 1.6;">{{ post.description |linebreaks }}</p>
+
+    
+    
+  </div>
   </body>
 </html>

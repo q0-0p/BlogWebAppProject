@@ -8,6 +8,7 @@ urlpatterns = [
     path('<int:pk>/', views.DetailView.as_view(), name='detail'),
     path('<int:pk>/results/', views.ResultsView.as_view(), name='results'),
     path('create', views.create, name='create'),
-    path('<int:question_id>/edit/', views.edit, name='edit'),
+    path('<int:pk>/edit/', views.edit, name='edit'),
+    path('addAuthor/', views.addAuthor, name='addAuthor'),
 
 ]

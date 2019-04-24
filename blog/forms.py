@@ -11,6 +11,8 @@ class CreateForm(forms.Form):
 
 
 class CreateAuthorForm(forms.ModelForm):
+    bio = forms.CharField(widget=forms.Textarea)
+
     class Meta:
         model = Author
         fields = ('name', 'bio')

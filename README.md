@@ -33,21 +33,22 @@ Site Sections TODO:
 ## Post Page (DetailView)
 
 1. ✔️ Structure the data of the Post
-2. ❌ Edit the info on a Post
+2. ✔️ Edit the info on a Post
 3. ❌ Toggle draft / published status
 
 ## Create a post
 
 1. ✔️ Build the form to create a post
-2. ❌ Build the form to create an author
+2. ✔️ Build the form to create an author
 
 ## Shortcomings:
 
-1. Couldn't update the edit page fully in time
-2. Minor issue with index of posts unresolved(for edit page)
-3. Couldn't create the Create Author page in time (in order to add more authors, if needed - can still add using admin page)
-4. Coudln't create the toggle draft/published status in time
-5. First time exposure to python/django
+1. ✔️Couldn't update the edit page fully in time
+2. ✔️Minor issue with index of posts unresolved(for edit page)
+3. ✔️Couldn't create the Create Author page in time (in order to add more authors, if needed - can still add using admin page)
+4. ❌Coudln't create the toggle draft/published status in time
+5. ✔️First time exposure to python/django
+6. ✔️Updated stlying of pages to look more user friendly
 
 ## Admin login:
 
